@@ -182,7 +182,7 @@
   position: relative;
   z-index: 25;
   margin-top: auto;
-  margin-bottom: clamp(24px, 4vh, 40px);
+  margin-bottom: clamp(44px, 6vh, 64px);
 }
 
 /* --------------------------------------------------------------------------
@@ -198,7 +198,7 @@
   }
 
   .brandsArea {
-    margin-bottom: clamp(20px, 3vh, 32px);
+    margin-bottom: clamp(36px, 5vh, 52px);
   }
 }
 

@@ -3,6 +3,7 @@ import heroVideo from '../../../assets/images/hero-video2.mp4';
 import { HeroHeader } from './HeroHeader';
 import { HeroBackground } from './HeroBackground';
 import { TrustedBrands } from './TrustedBrands';
+import { OrganicWaveTransition } from './OrganicWaveTransition';
 import styles from './CinematicHero.module.css';
 
 export const CinematicHero: React.FC = () => {
@@ -55,6 +56,9 @@ export const CinematicHero: React.FC = () => {
             <TrustedBrands />
           </div>
         </div>
+
+        {/* 5. Organic Luminous Wave Transition (Black -> Orange Silk Light -> Cream) */}
+        <OrganicWaveTransition />
       </section>
     </div>
   );
