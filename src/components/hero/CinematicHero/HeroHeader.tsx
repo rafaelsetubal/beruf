@@ -7,13 +7,17 @@ export interface HeroHeaderProps {
 }
 
 export const HeroHeader: React.FC<HeroHeaderProps> = ({ onContactClick }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 20);
+
       // Trigger state change when scrolled past ~80% of the viewport height (exiting Hero)
       const threshold = (window.innerHeight || 800) * 0.8;
-      setIsPastHero(window.scrollY > threshold);
+      setIsPastHero(scrollY > threshold);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -26,6 +30,7 @@ export const HeroHeader: React.FC<HeroHeaderProps> = ({ onContactClick }) => {
     <header
       className={[
         styles.heroHeader,
+        isScrolled ? styles.headerScrolled : '',
         isPastHero ? styles.scrolledPastHero : '',
       ].filter(Boolean).join(' ')}
       aria-label="Navegação Principal"
