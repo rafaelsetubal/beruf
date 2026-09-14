@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import berufLogo from '../../../assets/brand/beruf-logo.png';
 import styles from './HeroHeader.module.css';
 
@@ -7,8 +7,29 @@ export interface HeroHeaderProps {
 }
 
 export const HeroHeader: React.FC<HeroHeaderProps> = ({ onContactClick }) => {
+  const [isPastHero, setIsPastHero] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Trigger state change when scrolled past ~80% of the viewport height (exiting Hero)
+      const threshold = (window.innerHeight || 800) * 0.8;
+      setIsPastHero(window.scrollY > threshold);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className={styles.heroHeader} aria-label="Navegação Principal">
+    <header
+      className={[
+        styles.heroHeader,
+        isPastHero ? styles.scrolledPastHero : '',
+      ].filter(Boolean).join(' ')}
+      aria-label="Navegação Principal"
+    >
       {/* Left: Brand Wordmark + 2-line Tagline */}
       <a href="/" className={styles.brandLink}>
         <img

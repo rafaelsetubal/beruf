@@ -1,26 +1,52 @@
+/* ==========================================================================
+   HeroHeader: Fixed, Transparent inside Hero -> Solid White with Orange Border Outside Hero
+   ========================================================================== */
+
 .heroHeader {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 88px;
-  z-index: 50;
+  height: 84px;
+  z-index: 100;
   padding: 0 clamp(1.5rem, 6vw, 5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
   pointer-events: auto;
   box-sizing: border-box;
+  transition: background-color var(--duration-normal, 250ms) cubic-bezier(0.16, 1, 0.3, 1),
+              border-color var(--duration-normal, 250ms) cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow var(--duration-normal, 250ms) cubic-bezier(0.16, 1, 0.3, 1),
+              height var(--duration-normal, 250ms) ease;
 }
 
+/* --------------------------------------------------------------------------
+   Scrolled Past Hero State (White background, light orange bottom line, black text)
+   -------------------------------------------------------------------------- */
+.scrolledPastHero {
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 117, 0, 0.32);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  height: 76px;
+}
+
+/* --------------------------------------------------------------------------
+   Brand Link & Descriptor
+   -------------------------------------------------------------------------- */
 .brandLink {
   display: inline-flex;
   align-items: center;
   gap: var(--space-4, 16px);
   text-decoration: none;
   color: #FFFFFF;
-  transition: opacity var(--duration-fast, 150ms) var(--ease-out, ease-out);
+  transition: opacity var(--duration-fast, 150ms) ease,
+              color var(--duration-normal, 250ms) ease;
 }
 
 .brandLink:hover {
@@ -28,7 +54,7 @@
 }
 
 .brandLogo {
-  height: 30px;
+  height: 28px;
   width: auto;
   object-fit: contain;
 }
@@ -45,6 +71,13 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
+  transition: color var(--duration-normal, 250ms) ease,
+              border-color var(--duration-normal, 250ms) ease;
+}
+
+.scrolledPastHero .brandDescriptor {
+  border-left-color: rgba(17, 17, 19, 0.18);
+  color: rgba(17, 17, 19, 0.65);
 }
 
 @media (min-width: 900px) {
@@ -53,6 +86,9 @@
   }
 }
 
+/* --------------------------------------------------------------------------
+   Center Editorial Navigation Links
+   -------------------------------------------------------------------------- */
 .nav {
   display: none;
   align-items: center;
@@ -73,13 +109,25 @@
   text-decoration: none;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: color var(--duration-fast, 150ms) var(--ease-out, ease-out);
+  transition: color var(--duration-fast, 150ms) ease;
 }
 
 .navLink:hover {
-  color: #FFFFFF;
+  color: #FF7500;
 }
 
+.scrolledPastHero .navLink {
+  color: #111113;
+  font-weight: 600;
+}
+
+.scrolledPastHero .navLink:hover {
+  color: #FF7500;
+}
+
+/* --------------------------------------------------------------------------
+   Right Action Elements
+   -------------------------------------------------------------------------- */
 .headerActions {
   display: flex;
   align-items: center;
@@ -95,11 +143,19 @@
   border: none;
   cursor: pointer;
   padding: 8px;
-  transition: color var(--duration-fast, 150ms) var(--ease-out, ease-out);
+  transition: color var(--duration-fast, 150ms) ease;
 }
 
 .iconBtn:hover {
-  color: #FFFFFF;
+  color: #FF7500;
+}
+
+.scrolledPastHero .iconBtn {
+  color: #111113;
+}
+
+.scrolledPastHero .iconBtn:hover {
+  color: #FF7500;
 }
 
 .langSwitch {
@@ -115,13 +171,22 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  transition: color var(--duration-fast, 150ms) var(--ease-out, ease-out);
+  transition: color var(--duration-fast, 150ms) ease;
 }
 
 .langSwitch:hover {
-  color: #FFFFFF;
+  color: #FF7500;
 }
 
+.scrolledPastHero .langSwitch {
+  color: #111113;
+}
+
+.scrolledPastHero .langSwitch:hover {
+  color: #FF7500;
+}
+
+/* Primary Specialist CTA */
 .specialistBtn {
   font-family: var(--font-display, 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif);
   font-size: 0.75rem;
@@ -132,19 +197,31 @@
   background: rgba(18, 18, 20, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 999px;
-  padding: 10px 22px;
+  padding: 9px 20px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: all var(--duration-fast, 150ms) var(--ease-out, ease-out);
+  transition: all var(--duration-fast, 150ms) ease;
   white-space: nowrap;
 }
 
 .specialistBtn:hover {
-  background: #FFFFFF;
+  background: #FF7500;
   color: #080807;
-  border-color: #FFFFFF;
+  border-color: #FF7500;
+}
+
+.scrolledPastHero .specialistBtn {
+  background: #111113;
+  color: #FFFFFF;
+  border-color: #111113;
+}
+
+.scrolledPastHero .specialistBtn:hover {
+  background: #FF7500;
+  color: #080807;
+  border-color: #FF7500;
 }
 
 .arrowIcon {
