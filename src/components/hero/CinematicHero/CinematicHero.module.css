@@ -1,43 +1,31 @@
 /* ==========================================================================
    BERUF Hero v2.0 (Awwwards / Studio-Level Digital Experience)
-   Scroll Immersion: Fullscreen at top -> Insets 16px top/sides & 16px rounded corners
+   Framed Hero (16px insets / top rounded corners) on Unified Cream Canvas
    ========================================================================== */
 
 .heroOuterWrapper {
   position: relative;
   width: 100%;
   background-color: #FBF9F5;
-  padding: 0;
-  box-sizing: border-box;
-  transition: padding var(--duration-normal, 350ms) cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.heroOuterInset {
   padding: 16px 16px 0 16px;
+  box-sizing: border-box;
 }
 
 .heroSection {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 100vh;
-  max-height: 100vh;
+  height: calc(100vh - 16px);
+  min-height: calc(100vh - 16px);
+  max-height: calc(100vh - 16px);
   background-color: #080807;
   color: #FFFFFF;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  transition: border-radius var(--duration-normal, 350ms) cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow var(--duration-normal, 350ms) cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.heroSectionInset {
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: none; /* No shadow, unified with cream page */
 }
 
 .heroStage {
@@ -48,7 +36,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: clamp(84px, 11vh, 112px) 7vw clamp(24px, 3vh, 36px) 7vw;
+  padding: clamp(80px, 10.5vh, 108px) 7vw clamp(24px, 3.5vh, 40px) 7vw;
   box-sizing: border-box;
 }
 
@@ -61,7 +49,7 @@
   flex-direction: column;
   position: relative;
   z-index: 12;
-  margin-top: clamp(28px, 5.5vh, 56px);
+  margin-top: clamp(24px, 4.5vh, 48px);
 }
 
 .eyebrowRow {
@@ -114,7 +102,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Single Clean CTA
+   Metalized Brushed Copper / Orange Anodized CTA
    -------------------------------------------------------------------------- */
 .ctaArea {
   display: flex;
@@ -122,35 +110,64 @@
 }
 
 .primaryCta {
-  background-color: #FF7500;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FFA03A 0%, #FF7500 48%, #D65A00 100%);
   color: #080807;
   font-family: var(--font-display, 'Urbanist', sans-serif);
   font-weight: 700;
   font-size: 0.8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  height: 50px;
-  padding: 0 28px;
+  height: 52px;
+  padding: 0 30px;
   border-radius: 999px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 4px 24px rgba(255, 117, 0, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.28),
+    0 6px 24px rgba(255, 117, 0, 0.32);
   transition: transform var(--duration-fast, 150ms) cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow var(--duration-fast, 150ms) ease,
-              background-color var(--duration-fast, 150ms) ease;
+              background var(--duration-fast, 150ms) ease;
 }
 
 .primaryCta:hover {
-  background-color: #FFA133;
+  background: linear-gradient(135deg, #FFB35C 0%, #FF851A 48%, #E66500 100%);
   transform: translateY(-1px);
-  box-shadow: 0 8px 32px rgba(255, 117, 0, 0.48);
+  box-shadow: 
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.65),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.3),
+    0 10px 32px rgba(255, 117, 0, 0.48);
+}
+
+.ctaSheen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, transparent 100%);
+  border-radius: 999px 999px 0 0;
+  pointer-events: none;
+}
+
+.ctaText {
+  position: relative;
+  z-index: 2;
+  color: #080807;
 }
 
 .ctaArrow {
+  position: relative;
+  z-index: 2;
   font-size: 1rem;
   line-height: 1;
+  color: #080807;
   transition: transform var(--duration-fast, 150ms) ease;
 }
 
@@ -159,13 +176,13 @@
 }
 
 /* --------------------------------------------------------------------------
-   Trusted Brands
+   Trusted Brands (Inside Hero, bottom)
    -------------------------------------------------------------------------- */
 .brandsArea {
   position: relative;
   z-index: 25;
   margin-top: auto;
-  margin-bottom: clamp(84px, 12.5vh, 126px);
+  margin-bottom: clamp(24px, 4vh, 40px);
 }
 
 /* --------------------------------------------------------------------------
@@ -181,12 +198,12 @@
   }
 
   .brandsArea {
-    margin-bottom: clamp(60px, 9vh, 84px);
+    margin-bottom: clamp(20px, 3vh, 32px);
   }
 }
 
 @media (max-width: 768px) {
-  .heroOuterInset {
+  .heroOuterWrapper {
     padding: 10px 10px 0 10px;
   }
 
@@ -217,6 +234,6 @@
 
   .brandsArea {
     margin-top: 36px;
-    margin-bottom: 48px;
+    margin-bottom: 24px;
   }
 }
