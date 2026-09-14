@@ -1,0 +1,320 @@
+/* ==========================================================================
+   BERUF Brasil — Type Lab (Hero Typography Laboratory)
+   Strict, pure comparison environment
+   ========================================================================== */
+
+.pageWrapper {
+  width: 100%;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}
+
+/* Laboratory Overview Header */
+.labHeader {
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg-surface);
+}
+
+.labTag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-brand-orange);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+
+.labTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.labDesc {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-md);
+  color: var(--color-text-secondary);
+  max-width: 780px;
+  line-height: var(--leading-relaxed);
+}
+
+/* Quick Jump Sticky Navigation */
+.stickyJumpBar {
+  position: sticky;
+  top: 72px;
+  z-index: 150;
+  background-color: rgba(251, 249, 245, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-3) 0;
+}
+
+[data-theme='black'] .stickyJumpBar {
+  background-color: rgba(12, 13, 14, 0.94);
+}
+
+.jumpLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.jumpLink {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-base);
+  transition: all var(--motion-ui-fast) var(--ease-out);
+}
+
+.jumpLink:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-brand-orange);
+}
+
+/* ==========================================================================
+   HERO INSTANCE STRUCTURE (STRICTLY IDENTICAL METRICS)
+   ========================================================================== */
+
+.heroInstance {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-20);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+
+.instanceIdentifierBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.identifierText {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-brand-orange);
+  text-transform: uppercase;
+}
+
+.identifierMeta {
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+}
+
+/* 2-Column Hero Grid matching Phase 01.6 */
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr 1.15fr;
+    gap: var(--space-10);
+  }
+}
+
+.heroTag {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-brand-orange);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+}
+
+.accentBar {
+  display: inline-block;
+  width: 2px;
+  height: 16px;
+  background-color: var(--color-brand-orange);
+  margin-right: var(--space-2);
+  vertical-align: middle;
+}
+
+/* Headline Base Styling - Shared across all variants */
+.headlineCommon {
+  font-size: clamp(2.75rem, 6.25vw + 1rem, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-6);
+  max-width: 900px;
+}
+
+/* Subcopy Base Styling */
+.subcopyCommon {
+  font-size: clamp(0.75rem, 0.9vw + 0.25rem, 0.875rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+/* CTA Link */
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  border-bottom: 2px solid var(--color-brand-orange);
+  padding-bottom: 4px;
+  width: fit-content;
+  text-decoration: none;
+  transition: gap var(--motion-ui-fast) var(--ease-out),
+              color var(--motion-ui-fast) var(--ease-out);
+}
+
+.ctaLink:hover {
+  gap: var(--space-4);
+  color: var(--color-brand-orange);
+}
+
+/* Media Frame matching Phase 01.6 */
+.heroMediaWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .heroMediaWrapper {
+    margin-right: -4%;
+    width: 104%;
+  }
+}
+
+.heroImageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: 0 16px 40px -12px rgba(17, 17, 19, 0.08);
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+  display: block;
+}
+
+.heroImageBadge {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: rgba(251, 249, 245, 0.9);
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-border-subtle);
+  backdrop-filter: blur(8px);
+}
+
+/* ==========================================================================
+   THE 6 TYPOGRAPHY VARIATIONS (THE ONLY VARIABLE)
+   ========================================================================== */
+
+/* 01 — SPACE GROTESK 500 */
+.fontSpace500 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* 02 — URBANIST 400 */
+.fontUrbanist400 {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* 03 — URBANIST 500 */
+.fontUrbanist500 {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+/* 04 — URBANIST 600 */
+.fontUrbanist600 {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* 05 — PLUS JAKARTA SANS 500 */
+.fontJakarta500 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* 06 — BARLOW NORMAL 500 (Not Semi-Condensed) */
+.fontBarlowNormal500 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0em;
+}
+
+/* Mobile Recomposition */
+@media (max-width: 767px) {
+  .headlineCommon {
+    margin-bottom: var(--space-4);
+  }
+
+  .heroImageFrame {
+    aspect-ratio: 16 / 10;
+  }
+
+  .heroImage {
+    object-position: 75% center;
+  }
+}

@@ -1,0 +1,94 @@
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: all var(--motion-ui-fast) var(--ease-out);
+  cursor: pointer;
+  border: 1px solid transparent;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.iconButton:active {
+  transform: scale(0.96);
+}
+
+.rounded {
+  border-radius: var(--radius-full);
+}
+
+.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Sizes */
+.sizeSm {
+  width: 32px;
+  height: 32px;
+}
+
+.sizeMd {
+  width: 40px;
+  height: 40px;
+}
+
+.sizeLg {
+  width: 48px;
+  height: 48px;
+}
+
+/* Variants */
+.variantPrimary {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-base);
+  border-color: var(--color-text-primary);
+}
+.variantPrimary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-orange-contrast);
+  border-color: var(--color-accent);
+}
+
+.variantSecondary {
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+.variantSecondary:hover {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-border-strong);
+}
+
+.variantOutline {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+.variantOutline:hover {
+  background-color: var(--color-accent-subtle);
+  border-color: var(--color-accent);
+}
+
+.variantGhost {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-color: transparent;
+}
+.variantGhost:hover {
+  background-color: var(--color-bg-surface);
+}
+
+.variantEnergy {
+  background-color: var(--color-brand-orange);
+  color: var(--color-orange-contrast);
+  border-color: var(--color-brand-orange);
+  box-shadow: 0 2px 8px rgba(255, 143, 28, 0.25);
+}
+.variantEnergy:hover {
+  background-color: var(--color-orange-hover);
+  border-color: var(--color-orange-hover);
+  box-shadow: 0 4px 14px rgba(255, 143, 28, 0.35);
+}

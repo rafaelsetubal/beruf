@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Hero Transition Section: Warm Cream (#FBF9F5) Editorial Continuation
+   Pure Typography, Massive Breathing Room, 12-Column Grid
+   ========================================================================== */
+
+.transitionContainer {
+  position: relative;
+  width: 100%;
+  background-color: #FBF9F5;
+  color: #111113;
+  padding-top: clamp(80px, 10vh, 120px);
+  padding-bottom: clamp(100px, 14vh, 160px);
+  overflow: hidden;
+  z-index: 2;
+}
+
+.editorialGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(3rem, 6vw, 6.5rem);
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: clamp(18px, 2.5vh, 28px);
+}
+
+.transitionEyebrow {
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FF7500;
+}
+
+.eyebrowLine {
+  display: block;
+  width: 44px;
+  height: 1px;
+  background-color: #FF7500;
+  opacity: 0.7;
+}
+
+.transitionHeadline {
+  font-family: var(--font-display, 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif);
+  font-weight: 500;
+  font-size: clamp(48px, 4.8vw, 70px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: #111113;
+  margin: 0;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(24px, 4.5vh, 48px);
+}
+
+.transitionNarrative {
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(18px, 1.3vw, 21px);
+  color: #4A4A4F;
+  line-height: 1.65;
+  font-weight: 400;
+  margin: 0;
+  max-width: 520px;
+}
+
+@media (max-width: 1024px) {
+  .editorialGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .rightCol {
+    padding-top: 0;
+  }
+
+  .transitionHeadline {
+    font-size: clamp(38px, 6vw, 52px);
+  }
+}

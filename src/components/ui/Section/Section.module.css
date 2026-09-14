@@ -1,0 +1,37 @@
+.section {
+  width: 100%;
+  position: relative;
+}
+
+.spacingNone {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.spacingCompact {
+  padding-top: var(--section-compact);
+  padding-bottom: var(--section-compact);
+}
+
+.spacingRegular {
+  padding-top: var(--section-regular);
+  padding-bottom: var(--section-regular);
+}
+
+.spacingRelaxed {
+  padding-top: var(--section-relaxed);
+  padding-bottom: var(--section-relaxed);
+}
+
+.spacingHero {
+  padding-top: var(--section-hero);
+  padding-bottom: var(--section-hero);
+}
+
+.borderTop {
+  border-top: 1px solid var(--color-border);
+}
+
+.borderBottom {
+  border-bottom: 1px solid var(--color-border);
+}

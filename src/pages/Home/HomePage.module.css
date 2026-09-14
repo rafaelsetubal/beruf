@@ -1,0 +1,6 @@
+.homeContainer {
+  width: 100%;
+  overflow-x: clip;
+  background-color: var(--color-bg-base);
+}
+

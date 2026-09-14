@@ -1,0 +1,64 @@
+.heading {
+  margin: 0;
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Families */
+.fontDisplay { font-family: var(--font-display); }
+.fontBarlow { font-family: var(--font-barlow); }
+.fontSyne { font-family: var(--font-syne); }
+.fontSpace { font-family: var(--font-space); }
+
+/* Levels */
+.levelDisplay {
+  font-size: var(--text-display);
+  line-height: var(--leading-tight);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+}
+
+.levelH1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-tight);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+}
+
+.levelH2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-tight);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+}
+
+.levelH3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-snug);
+  font-weight: 600;
+}
+
+.levelH4 {
+  font-size: var(--text-h4);
+  line-height: var(--leading-snug);
+  font-weight: 600;
+}
+
+.levelH5 {
+  font-size: var(--text-h5);
+  line-height: var(--leading-normal);
+  font-weight: 600;
+}
+
+.levelH6 {
+  font-size: var(--text-h6);
+  line-height: var(--leading-normal);
+  font-weight: 600;
+}
+
+/* Tones */
+.tonePrimary { color: var(--color-text-primary); }
+.toneSecondary { color: var(--color-text-secondary); }
+.toneMuted { color: var(--color-text-muted); }
+.toneAccent { color: var(--color-accent); }
+.toneInverted { color: var(--color-text-inverted); }

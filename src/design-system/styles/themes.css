@@ -1,0 +1,116 @@
+/**
+ * BERUF Brasil — Design System Theme Engine
+ * 3 Semantic Themes:
+ * - cream (default, editorial off-white)
+ * - black (technical industrial)
+ * - orange (high-impact energy & transition)
+ */
+
+/* Default / Cream Theme */
+:root,
+[data-theme='cream'] {
+  --theme-name: 'cream';
+  color-scheme: light;
+
+  /* Surfaces & Canvas */
+  --color-bg-base: #FBF9F5;
+  --color-bg-surface: #F4F1EA;
+  --color-bg-elevated: #FFFFFF;
+  --color-bg-subtle: #EDE8DD;
+
+  /* Text & Typography */
+  --color-text-primary: #111113;
+  --color-text-secondary: #4A4D54;
+  --color-text-muted: #767268;
+  --color-text-inverted: #FFFFFF;
+
+  /* Hairline Borders */
+  --color-border: #E3DFD5;
+  --color-border-subtle: #EDE9E0;
+  --color-border-strong: #C5BFB1;
+
+  /* Accent & Energy */
+  --color-accent: var(--color-brand-orange);
+  --color-accent-hover: var(--color-orange-hover);
+  --color-accent-active: var(--color-orange-active);
+  --color-accent-contrast: var(--color-orange-contrast);
+  --color-accent-subtle: var(--color-orange-subtle);
+  --color-accent-glow: var(--color-orange-glow);
+
+  /* Component specifics */
+  --header-bg: rgba(251, 249, 245, 0.85);
+  --badge-bg: #EAE6DC;
+  --badge-text: #37383D;
+}
+
+/* Black Theme (Industrial Precision Dark) */
+[data-theme='black'] {
+  --theme-name: 'black';
+  color-scheme: dark;
+
+  /* Surfaces & Canvas */
+  --color-bg-base: #0C0D0E;
+  --color-bg-surface: #141518;
+  --color-bg-elevated: #1D1E22;
+  --color-bg-subtle: #181A1E;
+
+  /* Text & Typography */
+  --color-text-primary: #EDEDEE;
+  --color-text-secondary: #A0A5B2;
+  --color-text-muted: #787E8E;
+  --color-text-inverted: #0C0D0E;
+
+  /* Hairline Borders */
+  --color-border: #282A30;
+  --color-border-subtle: #1F2025;
+  --color-border-strong: #3E414A;
+
+  /* Accent & Energy */
+  --color-accent: var(--color-brand-orange);
+  --color-accent-hover: #FFA23E;
+  --color-accent-active: #E67C10;
+  --color-accent-contrast: #0C0D0E;
+  --color-accent-subtle: rgba(255, 143, 28, 0.16);
+  --color-accent-glow: rgba(255, 143, 28, 0.35);
+
+  /* Component specifics */
+  --header-bg: rgba(12, 13, 14, 0.88);
+  --badge-bg: #202227;
+  --badge-text: #D2D5DC;
+}
+
+/* Orange Theme (Energy, Transition & Impact) */
+[data-theme='orange'] {
+  --theme-name: 'orange';
+  color-scheme: light;
+
+  /* Surfaces & Canvas */
+  --color-bg-base: #FF8F1C;
+  --color-bg-surface: #F0800F;
+  --color-bg-elevated: #FFA036;
+  --color-bg-subtle: #E6780C;
+
+  /* Text & Typography */
+  --color-text-primary: #0C0D0E;
+  --color-text-secondary: #26272B;
+  --color-text-muted: #574F45;
+  --color-text-inverted: #FFFFFF;
+
+  /* Hairline Borders */
+  --color-border: rgba(12, 13, 14, 0.18);
+  --color-border-subtle: rgba(12, 13, 14, 0.10);
+  --color-border-strong: rgba(12, 13, 14, 0.32);
+
+  /* Accent & Energy (Dark ink for contrast) */
+  --color-accent: #0C0D0E;
+  --color-accent-hover: #222428;
+  --color-accent-active: #000000;
+  --color-accent-contrast: #FF8F1C;
+  --color-accent-subtle: rgba(12, 13, 14, 0.12);
+  --color-accent-glow: rgba(12, 13, 14, 0.20);
+
+  /* Component specifics */
+  --header-bg: rgba(255, 143, 28, 0.90);
+  --badge-bg: rgba(12, 13, 14, 0.14);
+  --badge-text: #0C0D0E;
+}

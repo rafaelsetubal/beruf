@@ -1,0 +1,169 @@
+.trustedWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 25;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.eyebrowText {
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.eyebrowLine {
+  display: block;
+  width: 44px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Scroll Block on the right of the header row */
+.scrollBlock {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.scrollDivider {
+  width: 1px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.scrollContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.scrollText {
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.scrollArrow {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  animation: bounceDown 2s infinite ease-in-out;
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+/* Infinite Marquee Carousel */
+.marqueeContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 6px 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  animation: scrollMarquee 32s linear infinite;
+  will-change: transform;
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+.marqueeGroup {
+  display: flex;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  padding-right: clamp(2.5rem, 5vw, 4.5rem);
+  flex-shrink: 0;
+}
+
+.brandItem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #A1A1AA;
+  opacity: 0.72;
+  transition: color var(--duration-fast, 150ms) ease,
+              opacity var(--duration-fast, 150ms) ease,
+              transform var(--duration-fast, 150ms) ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.brandItem:hover {
+  color: #FFFFFF;
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.logoSvg {
+  display: block;
+  width: auto;
+  max-height: 26px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+@media (max-width: 768px) {
+  .marqueeTrack {
+    animation-duration: 22s;
+  }
+
+  .scrollBlock {
+    display: none;
+  }
+}

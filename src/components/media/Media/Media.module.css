@@ -1,0 +1,57 @@
+.mediaContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+/* Aspect Ratios */
+.ar16_9 { aspect-ratio: 16 / 9; }
+.ar4_3 { aspect-ratio: 4 / 3; }
+.ar1_1 { aspect-ratio: 1 / 1; }
+.ar21_9 { aspect-ratio: 21 / 9; }
+.ar9_16 { aspect-ratio: 9 / 16; }
+.ar3_2 { aspect-ratio: 3 / 2; }
+.arAuto { aspect-ratio: auto; }
+
+/* Overlays */
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.overlayDark {
+  background: rgba(12, 13, 14, 0.45);
+}
+
+.overlayLight {
+  background: rgba(251, 249, 245, 0.40);
+}
+
+.overlayOrange {
+  background: rgba(255, 143, 28, 0.22);
+  mix-blend-mode: multiply;
+}
+
+.overlayGradient {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+.overlayTechnicalGrid {
+  background-image: 
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.35;
+}
+
+/* Object Fit & Position Utilities */
+.mediaElement {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

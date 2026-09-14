@@ -1,0 +1,46 @@
+.transitionWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(75px, 10vh, 105px);
+  pointer-events: none;
+  z-index: 15;
+  overflow: visible;
+  display: block;
+}
+
+/* 1. Ambient Warm Upward Glow Bloom */
+.ambientUpwardBloom {
+  position: absolute;
+  bottom: 20px;
+  left: 5%;
+  right: 5%;
+  height: 60px;
+  background: radial-gradient(ellipse 80% 60% at 50% 80%, rgba(255, 115, 0, 0.4) 0%, rgba(255, 143, 28, 0.12) 50%, transparent 80%);
+  filter: blur(28px);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* 2. Wave SVG */
+.transitionSvg {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .transitionWrapper {
+    height: 60px;
+  }
+
+  .ambientUpwardBloom {
+    height: 40px;
+    bottom: 10px;
+    filter: blur(16px);
+  }
+}

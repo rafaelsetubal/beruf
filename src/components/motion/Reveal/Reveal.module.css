@@ -1,0 +1,25 @@
+.revealWrapper {
+  display: block;
+  position: relative;
+  will-change: transform, opacity;
+}
+
+/* Static / CSS Minimal Mode */
+.fade {
+  transition: opacity var(--motion-editorial-reveal) var(--ease-cinematic);
+}
+
+.slideUp {
+  transition: opacity var(--motion-editorial-reveal) var(--ease-cinematic),
+              transform var(--motion-editorial-reveal) var(--ease-cinematic);
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

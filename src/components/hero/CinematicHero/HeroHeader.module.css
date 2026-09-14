@@ -1,0 +1,153 @@
+.heroHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 88px;
+  z-index: 50;
+  padding: 0 clamp(1.5rem, 6vw, 5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+.brandLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4, 16px);
+  text-decoration: none;
+  color: #FFFFFF;
+  transition: opacity var(--duration-fast, 150ms) var(--ease-out, ease-out);
+}
+
+.brandLink:hover {
+  opacity: 0.9;
+}
+
+.brandLogo {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brandDescriptor {
+  display: none;
+  flex-direction: column;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  padding-left: 12px;
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (min-width: 900px) {
+  .brandDescriptor {
+    display: flex;
+  }
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: clamp(1.25rem, 2.5vw, 2.75rem);
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: flex;
+  }
+}
+
+.navLink {
+  font-family: var(--font-display, 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color var(--duration-fast, 150ms) var(--ease-out, ease-out);
+}
+
+.navLink:hover {
+  color: #FFFFFF;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: color var(--duration-fast, 150ms) var(--ease-out, ease-out);
+}
+
+.iconBtn:hover {
+  color: #FFFFFF;
+}
+
+.langSwitch {
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 6px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color var(--duration-fast, 150ms) var(--ease-out, ease-out);
+}
+
+.langSwitch:hover {
+  color: #FFFFFF;
+}
+
+.specialistBtn {
+  font-family: var(--font-display, 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: rgba(18, 18, 20, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  padding: 10px 22px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--duration-fast, 150ms) var(--ease-out, ease-out);
+  white-space: nowrap;
+}
+
+.specialistBtn:hover {
+  background: #FFFFFF;
+  color: #080807;
+  border-color: #FFFFFF;
+}
+
+.arrowIcon {
+  font-size: 0.875rem;
+  line-height: 1;
+}

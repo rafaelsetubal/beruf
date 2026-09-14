@@ -1,0 +1,15 @@
+.maskReveal {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.clipInset {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path var(--motion-editorial-reveal) var(--ease-cinematic);
+}
+
+.clipCircle {
+  clip-path: circle(75% at 50% 50%);
+  transition: clip-path var(--motion-editorial-reveal) var(--ease-cinematic);
+}

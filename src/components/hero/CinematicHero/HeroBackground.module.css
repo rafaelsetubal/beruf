@@ -1,0 +1,85 @@
+.backgroundWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #080807;
+  z-index: 1;
+}
+
+/* Master Video Layer (Smooth fade-in on load, 60fps natural playback) */
+.videoElement {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  /* Clean color grading: glowing warm copper / amber while keeping pure blacks */
+  filter: hue-rotate(18deg) saturate(1.22) contrast(1.08) brightness(1.02);
+  transition: opacity 0.8s var(--ease-out, ease-out);
+  z-index: 1;
+}
+
+.videoLoaded {
+  opacity: 0.98;
+}
+
+/* Very subtle warm amber glow accent (Screen blend) */
+.amberGrading {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 65% 50%, rgba(255, 122, 0, 0.12) 0%, transparent 70%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Subtle dark wash to protect left-aligned text contrast without darkening the whole video */
+.darkWash {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, rgba(8, 8, 7, 0.62) 0%, rgba(8, 8, 7, 0.25) 36%, transparent 65%),
+    linear-gradient(180deg, rgba(8, 8, 7, 0.4) 0%, transparent 20%, transparent 70%, rgba(8, 8, 7, 0.8) 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Ambient Fallback Canvas */
+.canvasPlaceholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #080807;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60vw;
+  height: 40vh;
+  background: radial-gradient(ellipse at center, rgba(255, 117, 0, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+/* Layer 1: Fade to Black at Bottom */
+.bottomFadeToBlack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(8, 8, 7, 0.5) 45%, #080807 100%);
+  pointer-events: none;
+  z-index: 4;
+}

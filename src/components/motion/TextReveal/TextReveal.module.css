@@ -1,0 +1,21 @@
+.textReveal {
+  display: block;
+}
+
+.lineWrapper {
+  overflow: hidden;
+  display: block;
+}
+
+.wordWrapper {
+  overflow: hidden;
+  display: inline-block;
+  margin-right: 0.25em;
+  vertical-align: top;
+}
+
+.inner {
+  display: inline-block;
+  transform: translateY(0%);
+  transition: transform var(--motion-editorial-reveal) var(--ease-expo);
+}

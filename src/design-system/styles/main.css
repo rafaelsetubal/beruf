@@ -1,0 +1,49 @@
+/**
+ * BERUF Brasil — Main Design System Entry CSS
+ */
+
+@import './reset.css';
+@import './tokens.css';
+@import './themes.css';
+@import './typography.css';
+@import './grid.css';
+
+body {
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  transition: background-color var(--motion-ui-slow) var(--ease-out),
+              color var(--motion-ui-slow) var(--ease-out);
+  overflow-x: clip;
+}
+
+/* Accessible focus outlines */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Custom technical scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-xs);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Selection highlight */
+::selection {
+  background-color: var(--color-brand-orange);
+  color: var(--color-black-base);
+}

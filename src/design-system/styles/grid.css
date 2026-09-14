@@ -1,0 +1,70 @@
+/**
+ * BERUF Brasil — Design System Responsive Grid System
+ * 
+ * Desktop (>= 1280px): 12 columns
+ * Tablet / Compact Desktop (768px - 1279px, including 1024px): 8 columns
+ * Mobile (< 768px): 4 columns
+ */
+
+.beruf-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--gutter-mobile);
+  row-gap: var(--gutter-mobile);
+}
+
+/* Tablet & Compact Desktop (768px - 1279px, 8 cols) */
+@media (min-width: 768px) {
+  .beruf-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: var(--gutter-tablet);
+    row-gap: var(--gutter-tablet);
+  }
+}
+
+/* Full Desktop & Wide (>= 1280px, 12 cols) */
+@media (min-width: 1280px) {
+  .beruf-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter-desktop);
+    row-gap: var(--gutter-desktop);
+  }
+}
+
+/* Col spans - Mobile default (1 to 4) */
+.col-span-1 { grid-column: span 1 / span 1; }
+.col-span-2 { grid-column: span 2 / span 2; }
+.col-span-3 { grid-column: span 3 / span 3; }
+.col-span-4 { grid-column: span 4 / span 4; }
+.col-span-full { grid-column: 1 / -1; }
+
+/* Col spans - Tablet & Compact (md: 768px - 1279px) */
+@media (min-width: 768px) {
+  .md-col-span-1 { grid-column: span 1 / span 1; }
+  .md-col-span-2 { grid-column: span 2 / span 2; }
+  .md-col-span-3 { grid-column: span 3 / span 3; }
+  .md-col-span-4 { grid-column: span 4 / span 4; }
+  .md-col-span-5 { grid-column: span 5 / span 5; }
+  .md-col-span-6 { grid-column: span 6 / span 6; }
+  .md-col-span-7 { grid-column: span 7 / span 7; }
+  .md-col-span-8 { grid-column: span 8 / span 8; }
+  .md-col-span-full { grid-column: 1 / -1; }
+}
+
+/* Col spans - Full Desktop (xl: 1280px+) */
+@media (min-width: 1280px) {
+  .xl-col-span-1  { grid-column: span 1 / span 1; }
+  .xl-col-span-2  { grid-column: span 2 / span 2; }
+  .xl-col-span-3  { grid-column: span 3 / span 3; }
+  .xl-col-span-4  { grid-column: span 4 / span 4; }
+  .xl-col-span-5  { grid-column: span 5 / span 5; }
+  .xl-col-span-6  { grid-column: span 6 / span 6; }
+  .xl-col-span-7  { grid-column: span 7 / span 7; }
+  .xl-col-span-8  { grid-column: span 8 / span 8; }
+  .xl-col-span-9  { grid-column: span 9 / span 9; }
+  .xl-col-span-10 { grid-column: span 10 / span 10; }
+  .xl-col-span-11 { grid-column: span 11 / span 11; }
+  .xl-col-span-12 { grid-column: span 12 / span 12; }
+  .xl-col-span-full { grid-column: 1 / -1; }
+}

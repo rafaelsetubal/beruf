@@ -1,0 +1,25 @@
+.imageRevealContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.curtain {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg-base);
+  z-index: 2;
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+.imageContent {
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  transition: transform var(--motion-editorial-image) var(--ease-cinematic);
+}
+
+.imageRevealContainer:hover .imageContent {
+  transform: scale(1.03);
+}
