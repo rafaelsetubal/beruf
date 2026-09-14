@@ -6,7 +6,7 @@
 .heroOuterWrapper {
   position: relative;
   width: 100%;
-  background-color: #080807;
+  background-color: #FBF9F5;
   padding: 0;
   box-sizing: border-box;
   transition: padding var(--duration-normal, 350ms) cubic-bezier(0.16, 1, 0.3, 1);
@@ -37,7 +37,7 @@
 .heroSectionInset {
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .heroStage {
