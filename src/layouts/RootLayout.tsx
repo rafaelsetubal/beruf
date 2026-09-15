@@ -175,45 +175,6 @@ export const RootLayout: React.FC<RootLayoutProps> = ({
         {children}
       </main>
 
-      {/* Discreet floating lab dock when viewing Home */}
-      {isHome && (
-        <aside className={styles.floatingDock} aria-label="Navegação de Laboratórios de Design">
-          <a
-            href="/"
-            className={[styles.floatingBtn, styles.floatingBtnActive].join(' ')}
-            onClick={(e) => handleRouteClick(e, '/')}
-            title="Home (Nova Hero)"
-          >
-            <span className={styles.floatingDotActive} />
-            <span>00 Home</span>
-          </a>
-          <a
-            href="/ds"
-            className={styles.floatingBtn}
-            onClick={(e) => handleRouteClick(e, '/ds')}
-            title="Fundação Design System"
-          >
-            <span>01 DS</span>
-          </a>
-          <a
-            href="/brand-dna"
-            className={styles.floatingBtn}
-            onClick={(e) => handleRouteClick(e, '/brand-dna')}
-            title="Brand DNA / Visual Proof"
-          >
-            <span>01.5 DNA</span>
-          </a>
-          <a
-            href="/type-lab"
-            className={styles.floatingBtn}
-            onClick={(e) => handleRouteClick(e, '/type-lab')}
-            title="Typography Lab"
-          >
-            <span>02 Type</span>
-          </a>
-        </aside>
-      )}
-
       {/* Technical Status Footer (for internal labs) */}
       {!isHome && (
         <footer className={styles.footer}>
