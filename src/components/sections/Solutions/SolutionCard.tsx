@@ -10,8 +10,9 @@ export interface SolutionCardProps {
   product: string;
   background: string;
   imageAlt?: string;
-  topOffset?: string;
-  paddingX?: string;
+  imageScale?: string;
+  imageOffsetY?: string;
+  imageOffsetX?: string;
 }
 
 export const SolutionCard: React.FC<SolutionCardProps> = ({
@@ -22,8 +23,9 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({
   product,
   background,
   imageAlt,
-  topOffset = '-20px',
-  paddingX = '16px',
+  imageScale = '105%',
+  imageOffsetY = '0px',
+  imageOffsetX = '0px',
 }) => {
   return (
     <article className={styles.card} aria-label={title}>
@@ -38,21 +40,20 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({
         <div className={styles.bgGlow} />
       </div>
 
-      {/* 2. Product Clip Layer (Enforces exact horizontal bounding with controlled top-only overflow) */}
-      <div
-        className={styles.productClip}
-        style={
-          {
-            '--top-offset': topOffset,
-            '--padding-x': paddingX,
-          } as React.CSSProperties
-        }
-      >
-        <div className={styles.productStage}>
+      {/* 2. Product Overflow Zone & Horizontal Clip Mask (Top Elevation + Strict Lateral Containment) */}
+      <div className={styles.productOverflowZone} aria-hidden="true">
+        <div className={styles.productClip}>
           <img
             src={product}
             alt={imageAlt || title}
             className={styles.productImage}
+            style={
+              {
+                '--img-scale': imageScale,
+                '--img-offset-y': imageOffsetY,
+                '--img-offset-x': imageOffsetX,
+              } as React.CSSProperties
+            }
             loading="lazy"
           />
         </div>

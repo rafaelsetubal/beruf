@@ -23,8 +23,9 @@ const solutionsData: SolutionCardProps[] = [
     product: cablesImg,
     background: sharedBg,
     imageAlt: 'Cabos Elétricos Especiais BERUF',
-    topOffset: '-24px',
-    paddingX: '18px',
+    imageScale: '106%',
+    imageOffsetY: '-6px',
+    imageOffsetX: '0px',
   },
   {
     id: 'cable-carriers',
@@ -35,8 +36,9 @@ const solutionsData: SolutionCardProps[] = [
     product: carriersImg,
     background: sharedBg,
     imageAlt: 'Esteiras Porta-Cabos Industriais BERUF',
-    topOffset: '-20px',
-    paddingX: '14px',
+    imageScale: '108%',
+    imageOffsetY: '-4px',
+    imageOffsetX: '0px',
   },
   {
     id: 'protection',
@@ -47,8 +49,9 @@ const solutionsData: SolutionCardProps[] = [
     product: protectionImg,
     background: sharedBg,
     imageAlt: 'Proteção de Cabos e Tubos Corrugados BERUF',
-    topOffset: '-18px',
-    paddingX: '20px',
+    imageScale: '106%',
+    imageOffsetY: '-4px',
+    imageOffsetX: '0px',
   },
   {
     id: 'robotics',
@@ -59,8 +62,9 @@ const solutionsData: SolutionCardProps[] = [
     product: roboticsImg,
     background: sharedBg,
     imageAlt: 'Periféricos para Robótica e Dresspacks BERUF',
-    topOffset: '-24px',
-    paddingX: '14px',
+    imageScale: '108%',
+    imageOffsetY: '-4px',
+    imageOffsetX: '0px',
   },
 ];
 
