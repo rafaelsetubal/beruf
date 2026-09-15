@@ -1,6 +1,13 @@
 import React from 'react';
 import styles from './SolutionCard.module.css';
 
+export interface ProductPositionConfig {
+  scale?: number;
+  x?: string;
+  y?: string;
+  rotate?: string;
+}
+
 export interface SolutionCardProps {
   id: string;
   title: string;
@@ -9,14 +16,8 @@ export interface SolutionCardProps {
   linkHref: string;
   product: string;
   background: string;
-  eyebrow?: string;
   imageAlt?: string;
-  productScale?: number;
-  productX?: string;
-  productY?: string;
-  productRotate?: string;
-  productWidth?: string;
-  productHeight?: string;
+  productPosition?: ProductPositionConfig;
   productBlendMode?: 'normal' | 'screen' | 'lighten';
 }
 
@@ -27,59 +28,58 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({
   linkHref,
   product,
   background,
-  eyebrow,
   imageAlt,
-  productScale = 1.15,
-  productX = '0%',
-  productY = '-8%',
-  productRotate = '0deg',
-  productWidth = '125%',
-  productHeight = '75%',
+  productPosition = {},
   productBlendMode,
 }) => {
+  const {
+    scale = 1,
+    x = '0%',
+    y = '0%',
+    rotate = '0deg',
+  } = productPosition;
+
   return (
-    <article className={styles.solutionCard} aria-label={title}>
-      {/* 1. Background Layer (Full-bleed card backdrop with subtle zoom) */}
-      <div className={styles.solutionCard__background}>
+    <article className={styles.card} aria-label={title}>
+      {/* 1. Background Media Layer */}
+      <div className={styles.bgWrapper} aria-hidden="true">
         <img
           src={background}
           alt=""
-          aria-hidden="true"
-          className={styles.backgroundImage}
+          className={styles.bgImage}
           loading="lazy"
         />
-        <div className={styles.ambientGlow} aria-hidden="true" />
+        <div className={styles.bgGlow} />
       </div>
 
-      {/* 2. Independent Product Layer (Large visual asset protruding from top) */}
-      <div
-        className={styles.solutionCard__product}
-        style={
-          {
-            '--product-scale': productScale,
-            '--product-x': productX,
-            '--product-y': productY,
-            '--product-rotate': productRotate,
-            '--product-width': productWidth,
-            '--product-height': productHeight,
-          } as React.CSSProperties
-        }
-      >
-        <img
-          src={product}
-          alt={imageAlt || title}
-          className={styles.productImage}
-          loading="lazy"
-          style={productBlendMode ? { mixBlendMode: productBlendMode } : undefined}
-        />
+      {/* 2. Structured Product Stage */}
+      <div className={styles.productStage}>
+        <div
+          className={styles.productWrapper}
+          style={
+            {
+              '--pos-x': x,
+              '--pos-y': y,
+              '--pos-scale': scale,
+              '--pos-rotate': rotate,
+            } as React.CSSProperties
+          }
+        >
+          <img
+            src={product}
+            alt={imageAlt || title}
+            className={styles.productImage}
+            style={productBlendMode ? { mixBlendMode: productBlendMode } : undefined}
+            loading="lazy"
+          />
+        </div>
       </div>
 
-      {/* 3. Contrast & Legibility Gradient Layer */}
-      <div className={styles.solutionCard__gradient} aria-hidden="true" />
+      {/* 3. Gradient Layer for Crisp Contrast */}
+      <div className={styles.gradientOverlay} aria-hidden="true" />
 
-      {/* 4. HTML Editorial Content Layer (Bottom-pinned) */}
-      <div className={styles.solutionCard__content}>
-        {eyebrow && <span className={styles.eyebrow}>{eyebrow}</span>}
+      {/* 4. Bottom-Pinned Editorial HTML Content */}
+      <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>
         <a href={linkHref} className={styles.cta}>

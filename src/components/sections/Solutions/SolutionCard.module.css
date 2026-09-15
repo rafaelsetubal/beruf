@@ -1,161 +1,159 @@
 /* ==========================================================================
-   SolutionCard Component (Layered Editorial Industrial Card)
+   SolutionCard Component (Editorial Industrial Card)
+   Disciplined unified layout, non-overlapping product staging, calm motion
    ========================================================================== */
 
-.solutionCard {
+.card {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
-  aspect-ratio: 3 / 4.15;
-  min-height: 460px;
+  height: 530px;
   border-radius: 18px;
-  background-color: #07080A;
+  background-color: #08090C;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.55),
-              0 0 1px 1px rgba(255, 255, 255, 0.04);
-  overflow: visible; /* Allows product to protrude and break the top edge */
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.45);
+  overflow: hidden; /* Strict containment: no bleeding into neighboring cards */
   box-sizing: border-box;
-  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 600ms cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 500ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 500ms cubic-bezier(0.16, 1, 0.3, 1);
   isolation: isolate;
 }
 
-.solutionCard:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255, 117, 0, 0.38);
-  box-shadow: 0 24px 48px -10px rgba(0, 0, 0, 0.65),
-              0 0 32px rgba(255, 117, 0, 0.12),
-              0 0 1px 1px rgba(255, 117, 0, 0.2);
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 117, 0, 0.35);
+  box-shadow: 0 22px 46px -10px rgba(0, 0, 0, 0.65),
+              0 0 24px rgba(255, 117, 0, 0.08);
 }
 
 /* --------------------------------------------------------------------------
-   1. Background Layer
+   1. Background Media Layer
    -------------------------------------------------------------------------- */
-.solutionCard__background {
+.bgWrapper {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  border-radius: 17px;
-  overflow: hidden;
   z-index: 1;
   pointer-events: none;
 }
 
-.backgroundImage {
+.bgImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
   display: block;
-  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.solutionCard:hover .backgroundImage {
-  transform: scale(1.02);
-}
-
-.ambientGlow {
-  position: absolute;
-  top: 6%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85%;
-  height: 48%;
-  background: radial-gradient(ellipse at center, rgba(255, 117, 0, 0.22) 0%, rgba(255, 117, 0, 0.04) 55%, transparent 75%);
-  filter: blur(28px);
-  opacity: 0.65;
-  pointer-events: none;
-  transition: opacity 600ms ease;
-}
-
-.solutionCard:hover .ambientGlow {
   opacity: 0.95;
 }
 
-/* --------------------------------------------------------------------------
-   2. Product Layer (Protruding independent object)
-   -------------------------------------------------------------------------- */
-.solutionCard__product {
+.bgGlow {
   position: absolute;
-  top: var(--product-y, -8%);
-  left: var(--product-x, 0%);
-  width: var(--product-width, 125%);
-  height: var(--product-height, 75%);
-  z-index: 2;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 55%;
+  background: radial-gradient(circle at 50% 25%, rgba(255, 117, 0, 0.16) 0%, transparent 68%);
+  filter: blur(24px);
   pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 500ms ease;
+}
+
+.card:hover .bgGlow {
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   2. Product Stage (Top ~55% of Card)
+   -------------------------------------------------------------------------- */
+.productStage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 270px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translate(0, 0) scale(var(--product-scale, 1)) rotate(var(--product-rotate, 0deg));
-  transform-origin: center 60%;
-  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 24px 20px 0 20px;
+  box-sizing: border-box;
+  pointer-events: none;
 }
 
-.solutionCard:hover .solutionCard__product {
-  transform: translate(0, -10px) scale(calc(var(--product-scale, 1) * 1.035)) rotate(var(--product-rotate, 0deg));
+.productWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(var(--pos-x, 0%), var(--pos-y, 0%)) scale(var(--pos-scale, 1)) rotate(var(--pos-rotate, 0deg));
+  transform-origin: center center;
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Calm, non-scaling product motion on card hover (NO ZOOM) */
+.card:hover .productWrapper {
+  transform: translate(var(--pos-x, 0%), calc(var(--pos-y, 0%) - 4px)) scale(var(--pos-scale, 1)) rotate(var(--pos-rotate, 0deg));
 }
 
 .productImage {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.65));
 }
 
 /* --------------------------------------------------------------------------
-   3. Gradient Layer (Contrast & readability baseline)
+   3. Gradient Overlay (Guarantees Contrast for Text)
    -------------------------------------------------------------------------- */
-.solutionCard__gradient {
+.gradientOverlay {
   position: absolute;
   inset: 0;
-  border-radius: 17px;
   z-index: 3;
   pointer-events: none;
   background: linear-gradient(
     to bottom,
     transparent 20%,
-    rgba(7, 8, 10, 0.2) 42%,
-    rgba(7, 8, 10, 0.86) 68%,
-    rgba(7, 8, 10, 0.99) 100%
+    rgba(6, 7, 9, 0.25) 45%,
+    rgba(6, 7, 9, 0.88) 70%,
+    rgba(6, 7, 9, 0.99) 100%
   );
 }
 
 /* --------------------------------------------------------------------------
-   4. Content Layer (Editorial HTML typography)
+   4. Editorial Content (Bottom ~45% of Card)
    -------------------------------------------------------------------------- */
-.solutionCard__content {
+.content {
   position: relative;
   z-index: 4;
-  padding: clamp(20px, 2.2vw, 28px);
+  padding: 0 24px 28px 24px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   box-sizing: border-box;
-}
-
-.eyebrow {
-  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #FF7500;
-  margin-bottom: 8px;
 }
 
 .title {
   font-family: var(--font-display, 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif);
-  font-size: clamp(15.5px, 1.25vw, 18px);
+  font-size: clamp(16px, 1.2vw, 17.5px);
   font-weight: 700;
   letter-spacing: 0.01em;
-  line-height: 1.2;
+  line-height: 1.25;
   color: #FFFFFF;
   margin: 0 0 10px 0;
   text-transform: uppercase;
+  transition: transform 400ms ease;
+}
+
+.card:hover .title {
+  transform: translateY(-2px);
 }
 
 .description {
@@ -164,7 +162,8 @@
   font-weight: 400;
   color: #A1A1AA;
   line-height: 1.55;
-  margin: 0 0 22px 0;
+  margin: 0 0 20px 0;
+  min-height: 40px;
 }
 
 .cta {
@@ -172,7 +171,7 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -188,30 +187,34 @@
   transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.solutionCard:hover .ctaArrow {
+.card:hover .ctaArrow {
   transform: translate(3px, -3px);
 }
 
 /* --------------------------------------------------------------------------
    Responsive Adaptations
    -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
-  .solutionCard {
-    aspect-ratio: auto;
-    min-height: 480px;
+@media (max-width: 1200px) {
+  .card {
+    height: 500px;
+  }
+
+  .productStage {
+    height: 250px;
   }
 }
 
 @media (max-width: 640px) {
-  .solutionCard {
-    min-height: 440px;
+  .card {
+    height: 480px;
   }
 
-  .solutionCard__product {
-    transform: translate(0, 0) scale(calc(var(--product-scale, 1) * 0.95)) rotate(var(--product-rotate, 0deg));
+  .productStage {
+    height: 230px;
+    padding: 16px 16px 0 16px;
   }
 
-  .solutionCard:hover .solutionCard__product {
-    transform: translate(0, -6px) scale(calc(var(--product-scale, 1) * 0.98)) rotate(var(--product-rotate, 0deg));
+  .content {
+    padding: 0 20px 24px 20px;
   }
 }

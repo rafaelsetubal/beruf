@@ -23,12 +23,12 @@ const solutionsData: SolutionCardProps[] = [
     product: cablesImg,
     background: sharedBg,
     imageAlt: 'Cabos Elétricos Especiais BERUF',
-    productScale: 1.25,
-    productY: '-14%',
-    productX: '-4%',
-    productRotate: '-2deg',
-    productWidth: '130%',
-    productHeight: '80%',
+    productPosition: {
+      scale: 1.06,
+      x: '0%',
+      y: '0%',
+      rotate: '0deg',
+    },
     productBlendMode: 'screen',
   },
   {
@@ -40,12 +40,12 @@ const solutionsData: SolutionCardProps[] = [
     product: carriersImg,
     background: sharedBg,
     imageAlt: 'Esteiras Porta-Cabos Industriais BERUF',
-    productScale: 1.22,
-    productY: '-10%',
-    productX: '2%',
-    productRotate: '0deg',
-    productWidth: '130%',
-    productHeight: '80%',
+    productPosition: {
+      scale: 1.04,
+      x: '0%',
+      y: '0%',
+      rotate: '0deg',
+    },
     productBlendMode: 'screen',
   },
   {
@@ -57,12 +57,12 @@ const solutionsData: SolutionCardProps[] = [
     product: protectionImg,
     background: sharedBg,
     imageAlt: 'Proteção de Cabos e Tubos Corrugados BERUF',
-    productScale: 1.24,
-    productY: '-18%',
-    productX: '4%',
-    productRotate: '0deg',
-    productWidth: '128%',
-    productHeight: '82%',
+    productPosition: {
+      scale: 1.02,
+      x: '0%',
+      y: '-4%',
+      rotate: '0deg',
+    },
   },
   {
     id: 'robotics',
@@ -73,20 +73,25 @@ const solutionsData: SolutionCardProps[] = [
     product: roboticsImg,
     background: sharedBg,
     imageAlt: 'Periféricos para Robótica e Dresspacks BERUF',
-    productScale: 1.25,
-    productY: '-15%',
-    productX: '4%',
-    productRotate: '0deg',
-    productWidth: '130%',
-    productHeight: '80%',
+    productPosition: {
+      scale: 1.04,
+      x: '0%',
+      y: '-2%',
+      rotate: '0deg',
+    },
   },
 ];
 
 export const SolutionsSection: React.FC = () => {
   return (
-    <section className={styles.solutionsSection} data-theme="cream" id="solucoes" aria-label="Soluções Industriais BERUF">
+    <section
+      className={styles.solutionsSection}
+      data-theme="cream"
+      id="solucoes"
+      aria-label="Soluções Industriais BERUF"
+    >
       <Container maxWidth="2xl">
-        {/* Section Header */}
+        {/* Section Header with generous whitespace */}
         <div className={styles.headerRow}>
           <div className={styles.headerLeft}>
             <div className={styles.eyebrowRow}>
@@ -113,7 +118,7 @@ export const SolutionsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 4 Layered Editorial Solution Cards */}
+        {/* 4 Disciplined Industrial Solution Cards */}
         <div className={styles.cardsGrid}>
           {solutionsData.map((card) => (
             <SolutionCard key={card.id} {...card} />
