@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { type IndustrySector } from '../../../data/industrySectors';
 import styles from './IndustryThumbnailRail.module.css';
 
@@ -13,6 +13,19 @@ export const IndustryThumbnailRail: React.FC<IndustryThumbnailRailProps> = ({
   activeIndex,
   onSelectSector,
 }) => {
+  const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useEffect(() => {
+    const activeItem = itemRefs.current[activeIndex];
+    if (activeItem) {
+      activeItem.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'nearest',
+      });
+    }
+  }, [activeIndex]);
+
   return (
     <nav className={styles.railContainer} aria-label="Navegação rápida por setores">
       <div className={styles.railList}>
@@ -22,6 +35,9 @@ export const IndustryThumbnailRail: React.FC<IndustryThumbnailRailProps> = ({
           return (
             <button
               key={sector.id}
+              ref={(el) => {
+                itemRefs.current[index] = el;
+              }}
               type="button"
               className={[
                 styles.thumbItem,
