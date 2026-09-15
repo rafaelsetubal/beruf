@@ -6,6 +6,8 @@ export interface ProductPositionConfig {
   x?: string;
   y?: string;
   rotate?: string;
+  width?: string;
+  height?: string;
 }
 
 export interface SolutionCardProps {
@@ -18,7 +20,6 @@ export interface SolutionCardProps {
   background: string;
   imageAlt?: string;
   productPosition?: ProductPositionConfig;
-  productBlendMode?: 'normal' | 'screen' | 'lighten';
 }
 
 export const SolutionCard: React.FC<SolutionCardProps> = ({
@@ -30,19 +31,20 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({
   background,
   imageAlt,
   productPosition = {},
-  productBlendMode,
 }) => {
   const {
-    scale = 1,
+    scale = 1.15,
     x = '0%',
-    y = '0%',
+    y = '-15%',
     rotate = '0deg',
+    width = '112%',
+    height = '75%',
   } = productPosition;
 
   return (
     <article className={styles.card} aria-label={title}>
-      {/* 1. Background Media Layer */}
-      <div className={styles.bgWrapper} aria-hidden="true">
+      {/* 1. Card Background Layer (Clipped to Card Boundary with Rounded Corners) */}
+      <div className={styles.bgLayer} aria-hidden="true">
         <img
           src={background}
           alt=""
@@ -52,33 +54,32 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({
         <div className={styles.bgGlow} />
       </div>
 
-      {/* 2. Structured Product Stage */}
-      <div className={styles.productStage}>
-        <div
-          className={styles.productWrapper}
-          style={
-            {
-              '--pos-x': x,
-              '--pos-y': y,
-              '--pos-scale': scale,
-              '--pos-rotate': rotate,
-            } as React.CSSProperties
-          }
-        >
-          <img
-            src={product}
-            alt={imageAlt || title}
-            className={styles.productImage}
-            style={productBlendMode ? { mixBlendMode: productBlendMode } : undefined}
-            loading="lazy"
-          />
-        </div>
+      {/* 2. Independent Product Layer (Overflows and Breaks Card Top Edge) */}
+      <div
+        className={styles.productStage}
+        style={
+          {
+            '--pos-x': x,
+            '--pos-y': y,
+            '--pos-scale': scale,
+            '--pos-rotate': rotate,
+            '--pos-w': width,
+            '--pos-h': height,
+          } as React.CSSProperties
+        }
+      >
+        <img
+          src={product}
+          alt={imageAlt || title}
+          className={styles.productImage}
+          loading="lazy"
+        />
       </div>
 
-      {/* 3. Gradient Layer for Crisp Contrast */}
+      {/* 3. Gradient Overlay for Contrast and Readability */}
       <div className={styles.gradientOverlay} aria-hidden="true" />
 
-      {/* 4. Bottom-Pinned Editorial HTML Content */}
+      {/* 4. Bottom Editorial Typography & CTA */}
       <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>

@@ -5,9 +5,9 @@ import { SolutionCard, type SolutionCardProps } from './SolutionCard';
 // Shared Background Asset
 import sharedBg from '../../../assets/images/solutions/solutions-bg.png';
 
-// Product Assets
-import cablesImg from '../../../assets/images/solutions/card1-cables.jpg';
-import carriersImg from '../../../assets/images/solutions/card2-carriers.jpg';
+// Product Transparent PNG Assets
+import cablesImg from '../../../assets/images/solutions/card1-cables.png';
+import carriersImg from '../../../assets/images/solutions/card2-carriers.png';
 import protectionImg from '../../../assets/images/solutions/card3-protection.png';
 import roboticsImg from '../../../assets/images/solutions/card4-robotics.png';
 
@@ -24,12 +24,13 @@ const solutionsData: SolutionCardProps[] = [
     background: sharedBg,
     imageAlt: 'Cabos Elétricos Especiais BERUF',
     productPosition: {
-      scale: 1.06,
-      x: '0%',
-      y: '0%',
+      scale: 1.16,
+      x: '-3%',
+      y: '-18%',
       rotate: '0deg',
+      width: '114%',
+      height: '76%',
     },
-    productBlendMode: 'screen',
   },
   {
     id: 'cable-carriers',
@@ -41,12 +42,13 @@ const solutionsData: SolutionCardProps[] = [
     background: sharedBg,
     imageAlt: 'Esteiras Porta-Cabos Industriais BERUF',
     productPosition: {
-      scale: 1.04,
-      x: '0%',
-      y: '0%',
+      scale: 1.18,
+      x: '3%',
+      y: '-16%',
       rotate: '0deg',
+      width: '116%',
+      height: '76%',
     },
-    productBlendMode: 'screen',
   },
   {
     id: 'protection',
@@ -58,10 +60,12 @@ const solutionsData: SolutionCardProps[] = [
     background: sharedBg,
     imageAlt: 'Proteção de Cabos e Tubos Corrugados BERUF',
     productPosition: {
-      scale: 1.02,
-      x: '0%',
-      y: '-4%',
+      scale: 1.14,
+      x: '2%',
+      y: '-20%',
       rotate: '0deg',
+      width: '112%',
+      height: '78%',
     },
   },
   {
@@ -74,10 +78,12 @@ const solutionsData: SolutionCardProps[] = [
     background: sharedBg,
     imageAlt: 'Periféricos para Robótica e Dresspacks BERUF',
     productPosition: {
-      scale: 1.04,
-      x: '0%',
-      y: '-2%',
+      scale: 1.16,
+      x: '4%',
+      y: '-18%',
       rotate: '0deg',
+      width: '115%',
+      height: '76%',
     },
   },
 ];
@@ -118,7 +124,7 @@ export const SolutionsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 4 Disciplined Industrial Solution Cards */}
+        {/* 4 Solution Cards Grid with Top Overflow Room */}
         <div className={styles.cardsGrid}>
           {solutionsData.map((card) => (
             <SolutionCard key={card.id} {...card} />
