@@ -1,5 +1,6 @@
 /* ==========================================================================
-   SolutionCard Component (Layered Editorial Industrial Card with Top Overflow)
+   SolutionCard Component (Layered Editorial Industrial Card)
+   Enforces ZERO horizontal overflow, top-only product elevation, and NO zoom.
    ========================================================================== */
 
 .card {
@@ -13,7 +14,7 @@
   background-color: #07080A;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.45);
-  overflow: visible; /* Allows product to authentically break the top edge */
+  overflow: visible; /* Allows upward top elevation without horizontal spill */
   box-sizing: border-box;
   transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
               border-color 500ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -22,14 +23,14 @@
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   border-color: rgba(255, 117, 0, 0.38);
-  box-shadow: 0 24px 48px -10px rgba(0, 0, 0, 0.65),
-              0 0 24px rgba(255, 117, 0, 0.1);
+  box-shadow: 0 22px 46px -10px rgba(0, 0, 0, 0.65),
+              0 0 24px rgba(255, 117, 0, 0.08);
 }
 
 /* --------------------------------------------------------------------------
-   1. Background Media Layer (Clipped to Card Bounds)
+   1. Background Layer (Clipped to Rounded Card Bounds)
    -------------------------------------------------------------------------- */
 .bgLayer {
   position: absolute;
@@ -48,11 +49,6 @@
   object-fit: cover;
   object-position: center top;
   display: block;
-  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card:hover .bgImage {
-  transform: scale(1.02);
 }
 
 .bgGlow {
@@ -74,39 +70,39 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. Product Stage (Top-Overflowing Transparent Asset)
+   2. Product Stage (Zero horizontal overflow; strictly 100% width)
    -------------------------------------------------------------------------- */
 .productStage {
   position: absolute;
-  top: var(--pos-y, -16%);
-  left: 50%;
-  width: var(--pos-w, 112%);
-  height: var(--pos-h, 75%);
-  transform: translateX(-50%) translate(var(--pos-x, 0%), 0) scale(var(--pos-scale, 1.15)) rotate(var(--pos-rotate, 0deg));
-  transform-origin: center center;
-  z-index: 2;
-  pointer-events: none;
+  top: var(--top-offset, -25px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 290px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Calm, non-scaling product motion on card hover (NO ZOOM) */
-.card:hover .productStage {
-  transform: translateX(-50%) translate(var(--pos-x, 0%), -4px) scale(var(--pos-scale, 1.15)) rotate(var(--pos-rotate, 0deg));
+  padding: 0 16px;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 2;
+  transform: none !important; /* STRICTLY NO SCALE, NO ZOOM */
 }
 
 .productImage {
   width: 100%;
   height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.65));
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.65));
+  transform: none !important; /* STRICTLY NO SCALE, NO ZOOM */
 }
 
 /* --------------------------------------------------------------------------
-   3. Gradient Overlay (Guarantees Contrast for Text)
+   3. Gradient Overlay (Guarantees Text Readability)
    -------------------------------------------------------------------------- */
 .gradientOverlay {
   position: absolute;
@@ -145,11 +141,6 @@
   color: #FFFFFF;
   margin: 0 0 10px 0;
   text-transform: uppercase;
-  transition: transform 400ms ease;
-}
-
-.card:hover .title {
-  transform: translateY(-2px);
 }
 
 .description {
@@ -194,13 +185,19 @@
   .card {
     height: 500px;
   }
+  .productStage {
+    height: 270px;
+  }
 }
 
 @media (max-width: 640px) {
   .card {
     height: 480px;
   }
-
+  .productStage {
+    height: 250px;
+    padding: 0 12px;
+  }
   .content {
     padding: 0 20px 24px 20px;
   }

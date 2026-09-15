@@ -1,15 +1,6 @@
 import React from 'react';
 import styles from './SolutionCard.module.css';
 
-export interface ProductPositionConfig {
-  scale?: number;
-  x?: string;
-  y?: string;
-  rotate?: string;
-  width?: string;
-  height?: string;
-}
-
 export interface SolutionCardProps {
   id: string;
   title: string;
@@ -19,7 +10,7 @@ export interface SolutionCardProps {
   product: string;
   background: string;
   imageAlt?: string;
-  productPosition?: ProductPositionConfig;
+  topOffset?: string;
 }
 
 export const SolutionCard: React.FC<SolutionCardProps> = ({
@@ -30,20 +21,11 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({
   product,
   background,
   imageAlt,
-  productPosition = {},
+  topOffset = '-25px',
 }) => {
-  const {
-    scale = 1.15,
-    x = '0%',
-    y = '-15%',
-    rotate = '0deg',
-    width = '112%',
-    height = '75%',
-  } = productPosition;
-
   return (
     <article className={styles.card} aria-label={title}>
-      {/* 1. Card Background Layer (Clipped to Card Boundary with Rounded Corners) */}
+      {/* 1. Card Background Layer (Clipped to Card Bounds with Rounded Corners) */}
       <div className={styles.bgLayer} aria-hidden="true">
         <img
           src={background}
@@ -54,19 +36,10 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({
         <div className={styles.bgGlow} />
       </div>
 
-      {/* 2. Independent Product Layer (Overflows and Breaks Card Top Edge) */}
+      {/* 2. Product Stage (Zero horizontal overflow; strictly width: 100%, pops upwards only) */}
       <div
         className={styles.productStage}
-        style={
-          {
-            '--pos-x': x,
-            '--pos-y': y,
-            '--pos-scale': scale,
-            '--pos-rotate': rotate,
-            '--pos-w': width,
-            '--pos-h': height,
-          } as React.CSSProperties
-        }
+        style={{ '--top-offset': topOffset } as React.CSSProperties}
       >
         <img
           src={product}

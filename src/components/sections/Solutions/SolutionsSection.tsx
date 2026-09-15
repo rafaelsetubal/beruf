@@ -5,7 +5,7 @@ import { SolutionCard, type SolutionCardProps } from './SolutionCard';
 // Shared Background Asset
 import sharedBg from '../../../assets/images/solutions/solutions-bg.png';
 
-// Product Transparent PNG Assets
+// Official Product Assets
 import cablesImg from '../../../assets/images/solutions/card1-cables.png';
 import carriersImg from '../../../assets/images/solutions/card2-carriers.png';
 import protectionImg from '../../../assets/images/solutions/card3-protection.png';
@@ -23,14 +23,7 @@ const solutionsData: SolutionCardProps[] = [
     product: cablesImg,
     background: sharedBg,
     imageAlt: 'Cabos Elétricos Especiais BERUF',
-    productPosition: {
-      scale: 1.16,
-      x: '-3%',
-      y: '-18%',
-      rotate: '0deg',
-      width: '114%',
-      height: '76%',
-    },
+    topOffset: '-28px',
   },
   {
     id: 'cable-carriers',
@@ -41,14 +34,7 @@ const solutionsData: SolutionCardProps[] = [
     product: carriersImg,
     background: sharedBg,
     imageAlt: 'Esteiras Porta-Cabos Industriais BERUF',
-    productPosition: {
-      scale: 1.18,
-      x: '3%',
-      y: '-16%',
-      rotate: '0deg',
-      width: '116%',
-      height: '76%',
-    },
+    topOffset: '-24px',
   },
   {
     id: 'protection',
@@ -59,14 +45,7 @@ const solutionsData: SolutionCardProps[] = [
     product: protectionImg,
     background: sharedBg,
     imageAlt: 'Proteção de Cabos e Tubos Corrugados BERUF',
-    productPosition: {
-      scale: 1.14,
-      x: '2%',
-      y: '-20%',
-      rotate: '0deg',
-      width: '112%',
-      height: '78%',
-    },
+    topOffset: '-30px',
   },
   {
     id: 'robotics',
@@ -77,14 +56,7 @@ const solutionsData: SolutionCardProps[] = [
     product: roboticsImg,
     background: sharedBg,
     imageAlt: 'Periféricos para Robótica e Dresspacks BERUF',
-    productPosition: {
-      scale: 1.16,
-      x: '4%',
-      y: '-18%',
-      rotate: '0deg',
-      width: '115%',
-      height: '76%',
-    },
+    topOffset: '-35px',
   },
 ];
 
@@ -97,7 +69,7 @@ export const SolutionsSection: React.FC = () => {
       aria-label="Soluções Industriais BERUF"
     >
       <Container maxWidth="2xl">
-        {/* Section Header with generous whitespace */}
+        {/* Section Header */}
         <div className={styles.headerRow}>
           <div className={styles.headerLeft}>
             <div className={styles.eyebrowRow}>
@@ -124,7 +96,7 @@ export const SolutionsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 4 Solution Cards Grid with Top Overflow Room */}
+        {/* 4 Solution Cards Grid with Top Elevation Clearance */}
         <div className={styles.cardsGrid}>
           {solutionsData.map((card) => (
             <SolutionCard key={card.id} {...card} />
