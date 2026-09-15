@@ -1,0 +1,150 @@
+/* ==========================================================================
+   KineticHeadline Component
+   Typewriter energy wave: Base Muted -> Orange Ignite -> Settle to Final Color
+   ========================================================================== */
+
+.headline {
+  font-family: var(--font-display, 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  margin: 0;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  display: block;
+  white-space: normal;
+}
+
+.word {
+  display: inline-block;
+  transition: color 400ms ease, text-shadow 400ms ease, transform 400ms ease;
+  will-change: color, text-shadow;
+}
+
+/* --------------------------------------------------------------------------
+   Theme Cream (Default: darker cream -> orange ignite -> solid black)
+   -------------------------------------------------------------------------- */
+.themeCream .word {
+  color: #D6CFBE; /* Muted tone slightly darker than #FBF9F5 */
+}
+
+.themeCream .word.wordRevealed {
+  animation: wordIgniteCream 650ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--word-delay, 0ms);
+}
+
+.themeCream .word.highlightWord.wordRevealed {
+  animation: wordIgniteCreamHighlight 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--word-delay, 0ms);
+}
+
+@keyframes wordIgniteCream {
+  0% {
+    color: #D6CFBE;
+    text-shadow: none;
+    transform: translateY(0);
+  }
+  30% {
+    color: #FF7500;
+    text-shadow: 0 0 16px rgba(255, 117, 0, 0.55);
+    transform: translateY(-2px);
+  }
+  65% {
+    color: #FF7500;
+    text-shadow: 0 0 8px rgba(255, 117, 0, 0.25);
+    transform: translateY(0);
+  }
+  100% {
+    color: #111113;
+    text-shadow: none;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wordIgniteCreamHighlight {
+  0% {
+    color: #D6CFBE;
+    text-shadow: none;
+  }
+  35% {
+    color: #FFA03A;
+    text-shadow: 0 0 20px rgba(255, 117, 0, 0.7);
+    transform: translateY(-2px);
+  }
+  100% {
+    color: #FF7500;
+    text-shadow: 0 0 8px rgba(255, 117, 0, 0.3);
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Theme Dark (Default: deep charcoal -> orange ignite -> crisp white)
+   -------------------------------------------------------------------------- */
+.themeDark .word {
+  color: #1F2128;
+}
+
+.themeDark .word.wordRevealed {
+  animation: wordIgniteDark 650ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--word-delay, 0ms);
+}
+
+.themeDark .word.highlightWord.wordRevealed {
+  animation: wordIgniteDarkHighlight 750ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--word-delay, 0ms);
+}
+
+@keyframes wordIgniteDark {
+  0% {
+    color: #1F2128;
+    text-shadow: none;
+  }
+  35% {
+    color: #FF7500;
+    text-shadow: 0 0 16px rgba(255, 117, 0, 0.6);
+  }
+  100% {
+    color: #FFFFFF;
+    text-shadow: none;
+  }
+}
+
+@keyframes wordIgniteDarkHighlight {
+  0% {
+    color: #1F2128;
+    text-shadow: none;
+  }
+  35% {
+    color: #FFA03A;
+    text-shadow: 0 0 20px rgba(255, 117, 0, 0.75);
+  }
+  100% {
+    color: #FF7500;
+    text-shadow: 0 0 10px rgba(255, 117, 0, 0.35);
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    animation: none !important;
+    transition: none !important;
+  }
+  .themeCream .word {
+    color: #111113 !important;
+  }
+  .themeCream .word.highlightWord {
+    color: #FF7500 !important;
+  }
+  .themeDark .word {
+    color: #FFFFFF !important;
+  }
+  .themeDark .word.highlightWord {
+    color: #FF7500 !important;
+  }
+}

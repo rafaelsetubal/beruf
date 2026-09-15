@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Container } from '../../ui/Container';
+import { KineticHeadline } from '../../ui/KineticHeadline/KineticHeadline';
 import styles from './HeroTransition.module.css';
 
 interface MetricData {
@@ -54,7 +55,7 @@ export const HeroTransition: React.FC = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.18 }
     );
 
     if (sectionRef.current) {
@@ -78,18 +79,25 @@ export const HeroTransition: React.FC = () => {
       <Container maxWidth="2xl">
         {/* 1. Top Editorial Split Grid: Headline (Left) & Narrative + CTA (Right) */}
         <div className={styles.editorialGrid}>
-          {/* Left Column: Eyebrow + Display Headline */}
+          {/* Left Column: Eyebrow + Kinetic Headline */}
           <div className={styles.leftCol}>
             <div className={styles.eyebrowRow}>
               <span className={styles.eyebrowText}>ENGENHARIA EM CONTINUIDADE</span>
               <span className={styles.eyebrowLine} aria-hidden="true" />
             </div>
 
-            <h2 className={styles.headline}>
-              CONECTAMOS TECNOLOGIA<br />
-              AO MOVIMENTO DA<br />
-              <span className={styles.highlightOrange}>INDÚSTRIA.</span>
-            </h2>
+            <KineticHeadline
+              lines={[
+                'CONECTAMOS TECNOLOGIA',
+                'AO MOVIMENTO DA',
+                'INDÚSTRIA.',
+              ]}
+              highlightWord="INDÚSTRIA."
+              theme="cream"
+              isTriggered={isVisible}
+              className={styles.headline}
+              as="h2"
+            />
           </div>
 
           {/* Right Column: Supporting Body Text & Secondary Outline CTA */}
@@ -105,53 +113,8 @@ export const HeroTransition: React.FC = () => {
           </div>
         </div>
 
-        {/* 2. Protagonist Metrics with Animated Connecting Spline */}
+        {/* 2. Protagonist Metrics with Precision Aligned Connecting Line */}
         <div className={styles.metricsContainer}>
-          {/* Connecting SVG Spline (Cable Line Across the 3 Nodes) */}
-          <div className={styles.lineContainer} aria-hidden="true">
-            <svg
-              className={styles.lineSvg}
-              viewBox="0 0 1200 80"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-            >
-              <defs>
-                <linearGradient id="continuityGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#FF7500" stopOpacity="0.2" />
-                  <stop offset="25%" stopColor="#FF7500" stopOpacity="0.8" />
-                  <stop offset="50%" stopColor="#FFA03A" stopOpacity="1" />
-                  <stop offset="75%" stopColor="#FF7500" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#FF7500" stopOpacity="0.2" />
-                </linearGradient>
-
-                <filter id="cableAura" x="-10%" y="-100%" width="120%" height="300%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Background Guide Line (Neutral) */}
-              <path
-                d="M 40,40 C 300,52 480,26 600,38 C 720,50 900,28 1160,40"
-                stroke="rgba(17, 17, 19, 0.08)"
-                strokeWidth="1.5"
-              />
-
-              {/* Animated Orange Cable Core */}
-              <path
-                className={styles.animatedPath}
-                d="M 40,40 C 300,52 480,26 600,38 C 720,50 900,28 1160,40"
-                stroke="url(#continuityGlow)"
-                strokeWidth="2"
-                filter="url(#cableAura)"
-              />
-            </svg>
-          </div>
-
           {/* 3 Metrics Columns */}
           <div className={styles.metricsGrid}>
             {metrics.map((m, index) => {
@@ -173,8 +136,15 @@ export const HeroTransition: React.FC = () => {
                     <span className={styles.metricNumber}>{m.number}</span>
                   </div>
 
-                  {/* Connecting Milestone Node Dot on the Line */}
+                  {/* Connecting Milestone Node Dot on the Line (100% physically aligned) */}
                   <div className={styles.nodeWrapper} aria-hidden="true">
+                    <div className={styles.lineSegmentBase} />
+                    <div
+                      className={[
+                        styles.lineSegmentProgress,
+                        styles[`lineProgress${index + 1}`],
+                      ].join(' ')}
+                    />
                     <div
                       className={[
                         styles.nodeDot,
