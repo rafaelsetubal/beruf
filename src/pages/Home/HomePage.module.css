@@ -2,4 +2,5 @@
   width: 100%;
   overflow-x: clip;
   background-color: #FBF9F5;
+  scroll-snap-type: y proximity;
 }
