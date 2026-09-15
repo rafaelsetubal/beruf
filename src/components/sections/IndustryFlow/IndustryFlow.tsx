@@ -87,7 +87,6 @@ export const IndustryFlow: React.FC = () => {
       aria-label="Setores e Aplicações Industriais BERUF"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      tabIndex={0}
     >
       {/* 1. Cinematic Photographic Background Stage */}
       <IndustryBackground

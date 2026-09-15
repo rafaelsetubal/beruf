@@ -14,21 +14,32 @@ export const IndustryThumbnailRail: React.FC<IndustryThumbnailRailProps> = ({
   onSelectSector,
 }) => {
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const railListRef = useRef<HTMLDivElement>(null);
+  const isFirstMount = useRef(true);
 
   useEffect(() => {
+    // Skip initial mount so the window/page never jumps on initial load
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+
     const activeItem = itemRefs.current[activeIndex];
-    if (activeItem) {
-      activeItem.scrollIntoView({
+    const railList = railListRef.current;
+    if (activeItem && railList) {
+      const itemLeft = activeItem.offsetLeft;
+      const itemWidth = activeItem.offsetWidth;
+      const listWidth = railList.offsetWidth;
+      railList.scrollTo({
+        left: itemLeft - listWidth / 2 + itemWidth / 2,
         behavior: 'smooth',
-        block: 'nearest',
-        inline: 'nearest',
       });
     }
   }, [activeIndex]);
 
   return (
     <nav className={styles.railContainer} aria-label="Navegação rápida por setores">
-      <div className={styles.railList}>
+      <div ref={railListRef} className={styles.railList}>
         {sectors.map((sector, index) => {
           const isActive = index === activeIndex;
 

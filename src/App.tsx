@@ -26,6 +26,13 @@ export function App() {
   }, []);
 
   useEffect(() => {
+    // Ensure initial landing always starts at the top (Header & Hero) unless a hash anchor is provided
+    if (typeof window !== 'undefined') {
+      if (!window.location.hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+      }
+    }
+
     const handlePopState = () => {
       const path = window.location.pathname;
       setRoute(path === '/brand-dna' || path === '/type-lab' || path === '/ds' ? path : '/');
