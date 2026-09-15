@@ -1,6 +1,7 @@
 import React from 'react';
 import { CinematicHero, HeroTransition } from '../../components/hero/CinematicHero';
 import { SolutionsSection } from '../../components/sections/Solutions';
+import { IndustryFlow } from '../../components/sections/IndustryFlow';
 import styles from './HomePage.module.css';
 
 export const HomePage: React.FC = () => {
@@ -14,7 +15,11 @@ export const HomePage: React.FC = () => {
 
       {/* 3. Soluções Industriais (Grid de 4 Cards Escuros) */}
       <SolutionsSection />
+
+      {/* 4. Jornada pelos Setores Industriais (IndustryFlow 100vh) */}
+      <IndustryFlow />
     </div>
   );
 };
+
 

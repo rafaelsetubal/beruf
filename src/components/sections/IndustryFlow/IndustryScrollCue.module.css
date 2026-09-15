@@ -1,0 +1,78 @@
+/* ==========================================================================
+   IndustryScrollCue Component
+   Minimalist Vertical Scroll Cue in Bottom Right
+   ========================================================================== */
+
+.cueContainer {
+  position: absolute;
+  bottom: 28px;
+  right: clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 15;
+  pointer-events: none;
+  transition: opacity 600ms ease;
+  opacity: 0.85;
+}
+
+.cueFaded {
+  opacity: 0.25;
+}
+
+.textStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 1px;
+}
+
+.textStack span {
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.2;
+}
+
+.cueLine {
+  position: relative;
+  width: 1px;
+  height: 38px;
+  background-color: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.cueDot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background-color: #FF7500;
+  box-shadow: 0 0 6px #FF7500;
+  animation: cueDown 1800ms cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes cueDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(350%);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .cueContainer {
+    display: none;
+  }
+}

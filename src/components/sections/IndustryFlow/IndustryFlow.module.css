@@ -1,0 +1,90 @@
+/* ==========================================================================
+   IndustryFlow Component (Awwwards / Studio-Level Sector Journey)
+   Immersive 100vh Fullscreen Stage with Organic Line & Multi-State Navigation
+   ========================================================================== */
+
+.industrySection {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: #060709;
+  color: #FFFFFF;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(60px, 8vh, 90px) clamp(1.5rem, 5vw, 4.5rem) clamp(24px, 3.5vh, 36px) clamp(1.5rem, 5vw, 4.5rem);
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* Main Stage Split: Content Left & Next Action Right */
+.stageGrid {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.contentColumn {
+  max-width: 660px;
+  width: 100%;
+}
+
+.actionColumn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: clamp(10px, 2vw, 30px);
+}
+
+/* Bottom Controls Dock */
+.bottomDock {
+  position: relative;
+  z-index: 15;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 900px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adaptations
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .industrySection {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    padding: 80px 24px 32px 24px;
+    gap: 32px;
+  }
+
+  .stageGrid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .actionColumn {
+    padding-right: 0;
+    align-self: flex-start;
+  }
+
+  .bottomDock {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .industrySection {
+    padding: 60px 16px 24px 16px;
+    gap: 24px;
+  }
+}
