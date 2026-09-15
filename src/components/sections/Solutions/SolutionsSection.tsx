@@ -1,63 +1,90 @@
 import React from 'react';
 import { Container } from '../../ui/Container';
-import cableCoreImg from '../../../assets/images/beruf-cable-core.png';
-import cableHeroImg from '../../../assets/images/beruf-cable-hero.png';
-import roboticHeroImg from '../../../assets/images/beruf-robotic-hero.png';
+import { SolutionCard, type SolutionCardProps } from './SolutionCard';
+
+// Shared Background Asset
+import sharedBg from '../../../assets/images/solutions/solutions-bg.png';
+
+// Product Assets
+import cablesImg from '../../../assets/images/solutions/card1-cables.jpg';
+import carriersImg from '../../../assets/images/solutions/card2-carriers.jpg';
+import protectionImg from '../../../assets/images/solutions/card3-protection.png';
+import roboticsImg from '../../../assets/images/solutions/card4-robotics.png';
+
 import styles from './SolutionsSection.module.css';
 
-interface SolutionCardData {
-  id: string;
-  title: string;
-  description: string;
-  linkText: string;
-  linkHref: string;
-  imageSrc?: string;
-  imageAlt: string;
-  isPlaceholder?: boolean;
-}
-
-const solutionsData: SolutionCardData[] = [
+const solutionsData: SolutionCardProps[] = [
   {
-    id: 'cabos',
+    id: 'cables',
     title: 'CABOS ELÉTRICOS ESPECIAIS',
-    description: 'Cabos para automação, servomotores, redes industriais e movimentação contínua de altíssima durabilidade.',
+    description: 'Cabos para automação, servomotores, redes industriais e movimentação contínua de alta exigência.',
     linkText: 'EXPLORAR CABOS',
     linkHref: '#cabos-eletricos-especiais',
-    imageSrc: cableCoreImg,
+    product: cablesImg,
+    background: sharedBg,
     imageAlt: 'Cabos Elétricos Especiais BERUF',
+    productScale: 1.25,
+    productY: '-14%',
+    productX: '-4%',
+    productRotate: '-2deg',
+    productWidth: '130%',
+    productHeight: '80%',
+    productBlendMode: 'screen',
   },
   {
-    id: 'esteiras',
+    id: 'cable-carriers',
     title: 'ESTEIRAS PORTA-CABOS',
     description: 'Sistemas em polímero e aço para proteção e condução dinâmica de cabos e mangueiras industriais.',
     linkText: 'EXPLORAR ESTEIRAS',
     linkHref: '#esteiras-porta-cabos',
-    imageSrc: cableHeroImg,
-    imageAlt: 'Esteiras Porta-Cabos BERUF',
+    product: carriersImg,
+    background: sharedBg,
+    imageAlt: 'Esteiras Porta-Cabos Industriais BERUF',
+    productScale: 1.22,
+    productY: '-10%',
+    productX: '2%',
+    productRotate: '0deg',
+    productWidth: '130%',
+    productHeight: '80%',
+    productBlendMode: 'screen',
   },
   {
-    id: 'protecao',
+    id: 'protection',
     title: 'PROTEÇÃO DE CABOS',
-    description: 'Conduítes, prensa-cabos, calhas e tubos flexíveis projetados para máxima resistência mecânica e química.',
+    description: 'Conduítes, prensa-cabos, calhas e tubos flexíveis corrugados projetados para máxima resistência.',
     linkText: 'EXPLORAR PROTEÇÃO',
     linkHref: '#protecao-de-cabos',
-    isPlaceholder: true,
-    imageAlt: 'Proteção de Cabos BERUF',
+    product: protectionImg,
+    background: sharedBg,
+    imageAlt: 'Proteção de Cabos e Tubos Corrugados BERUF',
+    productScale: 1.24,
+    productY: '-18%',
+    productX: '4%',
+    productRotate: '0deg',
+    productWidth: '128%',
+    productHeight: '82%',
   },
   {
-    id: 'robotica',
+    id: 'robotics',
     title: 'PERIFÉRICOS PARA ROBÓTICA',
-    description: 'Dresspacks, sistemas de articulação, fixação e retração desenvolvidos para robôs articulados e células.',
+    description: 'Dresspacks, sistemas de articulação, fixação e retração desenvolvidos para robôs industriais.',
     linkText: 'EXPLORAR ROBÓTICA',
     linkHref: '#perifericos-robotica',
-    imageSrc: roboticHeroImg,
-    imageAlt: 'Periféricos para Robótica BERUF',
+    product: roboticsImg,
+    background: sharedBg,
+    imageAlt: 'Periféricos para Robótica e Dresspacks BERUF',
+    productScale: 1.25,
+    productY: '-15%',
+    productX: '4%',
+    productRotate: '0deg',
+    productWidth: '130%',
+    productHeight: '80%',
   },
 ];
 
 export const SolutionsSection: React.FC = () => {
   return (
-    <section className={styles.solutionsSection} data-theme="cream" id="solucoes" aria-label="Soluções BERUF">
+    <section className={styles.solutionsSection} data-theme="cream" id="solucoes" aria-label="Soluções Industriais BERUF">
       <Container maxWidth="2xl">
         {/* Section Header */}
         <div className={styles.headerRow}>
@@ -81,43 +108,15 @@ export const SolutionsSection: React.FC = () => {
 
             <a href="#catalogo" className={styles.allSolutionsLink}>
               <span>EXPLORAR TODAS AS SOLUÇÕES</span>
-              <span className={styles.linkArrow}>↗</span>
+              <span className={styles.linkArrow} aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
 
-        {/* 4 Industrial Product Cards */}
+        {/* 4 Layered Editorial Solution Cards */}
         <div className={styles.cardsGrid}>
           {solutionsData.map((card) => (
-            <article key={card.id} className={styles.card}>
-              {/* Product Visual Top Box */}
-              <div className={styles.imageBox}>
-                {card.imageSrc ? (
-                  <img
-                    src={card.imageSrc}
-                    alt={card.imageAlt}
-                    className={styles.productImage}
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className={styles.placeholderBox}>
-                    <div className={styles.placeholderPattern} />
-                    <span className={styles.placeholderText}>EM BREVE</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Card Body */}
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{card.title}</h3>
-                <p className={styles.cardDescription}>{card.description}</p>
-
-                <a href={card.linkHref} className={styles.cardLink}>
-                  <span>{card.linkText}</span>
-                  <span className={styles.cardLinkArrow}>↗</span>
-                </a>
-              </div>
-            </article>
+            <SolutionCard key={card.id} {...card} />
           ))}
         </div>
       </Container>
