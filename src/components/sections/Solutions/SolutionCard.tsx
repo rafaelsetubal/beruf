@@ -11,6 +11,7 @@ export interface SolutionCardProps {
   background: string;
   imageAlt?: string;
   topOffset?: string;
+  paddingX?: string;
 }
 
 export const SolutionCard: React.FC<SolutionCardProps> = ({
@@ -21,11 +22,12 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({
   product,
   background,
   imageAlt,
-  topOffset = '-25px',
+  topOffset = '-20px',
+  paddingX = '16px',
 }) => {
   return (
     <article className={styles.card} aria-label={title}>
-      {/* 1. Card Background Layer (Clipped to Card Bounds with Rounded Corners) */}
+      {/* 1. Background Layer (Clipped to Card Bounds with Rounded Corners) */}
       <div className={styles.bgLayer} aria-hidden="true">
         <img
           src={background}
@@ -36,17 +38,24 @@ export const SolutionCard: React.FC<SolutionCardProps> = ({
         <div className={styles.bgGlow} />
       </div>
 
-      {/* 2. Product Stage (Zero horizontal overflow; strictly width: 100%, pops upwards only) */}
+      {/* 2. Product Clip Layer (Enforces exact horizontal bounding with controlled top-only overflow) */}
       <div
-        className={styles.productStage}
-        style={{ '--top-offset': topOffset } as React.CSSProperties}
+        className={styles.productClip}
+        style={
+          {
+            '--top-offset': topOffset,
+            '--padding-x': paddingX,
+          } as React.CSSProperties
+        }
       >
-        <img
-          src={product}
-          alt={imageAlt || title}
-          className={styles.productImage}
-          loading="lazy"
-        />
+        <div className={styles.productStage}>
+          <img
+            src={product}
+            alt={imageAlt || title}
+            className={styles.productImage}
+            loading="lazy"
+          />
+        </div>
       </div>
 
       {/* 3. Gradient Overlay for Contrast and Readability */}
