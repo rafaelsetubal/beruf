@@ -1,4 +1,4 @@
-import sector01Img from '../assets/images/sectors/01-automotivo.png';
+import sector01Img from '../assets/images/sectors/01-automotiva.png';
 import sector02Img from '../assets/images/sectors/02-naval.jpg';
 import sector03Img from '../assets/images/sectors/03-ferroviario.jpg';
 import sector04Img from '../assets/images/sectors/04-robotica.jpg';
