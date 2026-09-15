@@ -12,8 +12,6 @@
   padding-bottom: clamp(100px, 12vh, 150px);
   box-sizing: border-box;
   overflow: visible;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
 }
 
 /* Header Row with Generous Whitespace */

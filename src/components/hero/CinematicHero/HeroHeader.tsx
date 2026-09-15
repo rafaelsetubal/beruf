@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import berufLogo from '../../../assets/brand/beruf-logo.png';
 import styles from './HeroHeader.module.css';
 
@@ -9,15 +9,34 @@ export interface HeroHeaderProps {
 export const HeroHeader: React.FC<HeroHeaderProps> = ({ onContactClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 20);
+      const currentScrollY = window.scrollY;
+      const lastScrollY = lastScrollYRef.current;
+      const scrollDiff = currentScrollY - lastScrollY;
+
+      setIsScrolled(currentScrollY > 20);
 
       // Trigger state change when scrolled past ~80% of the viewport height (exiting Hero)
       const threshold = (window.innerHeight || 800) * 0.8;
-      setIsPastHero(scrollY > threshold);
+      setIsPastHero(currentScrollY > threshold);
+
+      // Header visibility behavior:
+      // If near the top, always show header
+      if (currentScrollY <= 30) {
+        setIsHidden(false);
+      } else if (scrollDiff < -6) {
+        // Scrolling UP -> hide header as requested
+        setIsHidden(true);
+      } else if (scrollDiff > 6) {
+        // Scrolling DOWN -> reveal header
+        setIsHidden(false);
+      }
+
+      lastScrollYRef.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -32,6 +51,7 @@ export const HeroHeader: React.FC<HeroHeaderProps> = ({ onContactClick }) => {
         styles.heroHeader,
         isScrolled ? styles.headerScrolled : '',
         isPastHero ? styles.scrolledPastHero : '',
+        isHidden ? styles.headerHidden : '',
       ].filter(Boolean).join(' ')}
       aria-label="Navegação Principal"
     >

@@ -13,7 +13,6 @@ export const IndustryFlow: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLElement>(null);
   const touchStartXRef = useRef<number | null>(null);
-  const isThrottledRef = useRef(false);
 
   const totalSectors = industrySectors.length;
 
@@ -57,40 +56,7 @@ export const IndustryFlow: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activeIndex, totalSectors, handleNext, handlePrev]);
 
-  // Wheel Event Navigation (Progresses smoothly through sectors while within section)
-  useEffect(() => {
-    const sectionEl = containerRef.current;
-    if (!sectionEl) return;
 
-    const handleWheel = (e: WheelEvent) => {
-      const rect = sectionEl.getBoundingClientRect();
-      const isCentered = Math.abs(rect.top) < 50;
-
-      // When pinned in view, navigate sectors before continuing page scroll
-      if (isCentered) {
-        if (Math.abs(e.deltaY) > 30 && !isThrottledRef.current) {
-          if (e.deltaY > 0 && activeIndex < totalSectors - 1) {
-            e.preventDefault();
-            isThrottledRef.current = true;
-            setActiveIndex((prev) => Math.min(prev + 1, totalSectors - 1));
-            setTimeout(() => {
-              isThrottledRef.current = false;
-            }, 800);
-          } else if (e.deltaY < 0 && activeIndex > 0) {
-            e.preventDefault();
-            isThrottledRef.current = true;
-            setActiveIndex((prev) => Math.max(prev - 1, 0));
-            setTimeout(() => {
-              isThrottledRef.current = false;
-            }, 800);
-          }
-        }
-      }
-    };
-
-    sectionEl.addEventListener('wheel', handleWheel, { passive: false });
-    return () => sectionEl.removeEventListener('wheel', handleWheel);
-  }, [activeIndex, totalSectors]);
 
   // Touch Swipe on Mobile
   const handleTouchStart = (e: React.TouchEvent) => {
